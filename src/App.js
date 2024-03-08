@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import MoviesList from "./components/MoviesList";
 import "./App.css";
@@ -9,7 +9,8 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const fetchMoviesHandler = async () => {
+
+  const fetchMoviesHandler = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
@@ -35,7 +36,10 @@ function App() {
       again = setTimeout(() => fetchMoviesHandler(), 5000);
     }
     setIsLoading(false);
-  };
+  }, []);
+  useEffect(() => {
+    fetchMoviesHandler();
+  }, [fetchMoviesHandler]);
 
   let content = <p>Found no movies.</p>;
   if (movies.length > 0) {
@@ -48,12 +52,12 @@ function App() {
     content = <Loader />;
   }
   const onStopClickHandler = () => {
+    setError("Cannot be loaded");
     clearTimeout(again);
   };
   return (
     <React.Fragment>
       <section>
-        <button onClick={fetchMoviesHandler}>Fetch Movies</button>
         <button onClick={onStopClickHandler}>Stop Retrying</button>
       </section>
       <section>{content}</section>
