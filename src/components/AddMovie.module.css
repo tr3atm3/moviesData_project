@@ -1,0 +1,28 @@
+.form {
+  background-color: white;
+  width: 62%;
+  margin: 1rem auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+.form div {
+  margin: 1.5rem;
+}
+.form div label {
+  text-align: left;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.form div input {
+  border-radius: 1rem;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: 1px groove grey;
+}
+.textArea {
+  height: 8rem;
+}

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import MoviesList from "./components/MoviesList";
 import "./App.css";
 import Loader from "./components/Loader";
+import AddMovie from "./components/AddMovie";
 
 let again;
 function App() {
@@ -57,6 +58,7 @@ function App() {
   };
   return (
     <React.Fragment>
+      <AddMovie />
       <section>
         <button onClick={onStopClickHandler}>Stop Retrying</button>
       </section>
