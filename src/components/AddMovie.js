@@ -1,21 +1,23 @@
 import React, { useRef } from "react";
 import classes from "./AddMovie.module.css";
-const AddMovie = () => {
-  const title = useRef();
-  const openingText = useRef();
-  const release_date = useRef();
-  const data = {
-    title: title.current.value,
-    openingText: openingText.current.value,
-    release_date: release_date.current.value,
-  };
-  const handleFormSubmit = (e) => {
+const AddMovie = (props) => {
+  const title = useRef("");
+  const openingText = useRef("");
+  const release_date = useRef("");
+
+  const handleForm = (e) => {
     e.preventDefault();
-    console.log(data);
+    const data = {
+      title: title.current.value,
+      openingText: openingText.current.value,
+      release_date: release_date.current.value,
+    };
+    props.handleFormSubmit(data);
   };
+
   return (
     <div>
-      <form className={classes.form} onSubmit={handleFormSubmit}>
+      <form className={classes.form} onSubmit={handleForm}>
         <div>
           <label htmlFor="title">Title</label>
 
